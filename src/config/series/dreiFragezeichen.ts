@@ -1,13 +1,15 @@
 import type { SeriesConfig } from '../../types';
 
+const basePath = import.meta.env.BASE_URL;
+
 export const dreiFragezeichen: SeriesConfig = {
   id: 'ddf',
   name: 'Die drei ???',
   shortName: 'DDF',
-  logo: '/assets/ddf/logo.png',
+  logo: `${basePath}assets/ddf/logo.png`,
   themeColor: '#4a6cf7',
-  dataFile: '/data/episodes/ddf.json',
-  imageFolder: '/assets/ddf/images',
+  dataFile: `${basePath}data/episodes/ddf.json`,
+  imageFolder: `${basePath}assets/ddf/images`,
   streamingPlatforms: [
     { name: 'Spotify', icon: 'FaSpotify' },
     { name: 'Apple Podcasts', icon: 'FaApple' },
