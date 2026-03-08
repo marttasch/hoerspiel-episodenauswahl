@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './EpisodeCard.module.css';
 import type { Episode } from '../../../types';
 
@@ -18,9 +19,17 @@ export function EpisodeCard({
   onClick,
   imageBasePath = '',
 }: EpisodeCardProps) {
+  const [isAnimating, setIsAnimating] = useState(false);
   const imageSrc = imageBasePath
     ? `${imageBasePath}/${episode.image}`
     : episode.image;
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsAnimating(true);
+    onFavoriteToggle?.();
+    setTimeout(() => setIsAnimating(false), 300);
+  };
 
   return (
     <article
@@ -43,24 +52,21 @@ export function EpisodeCard({
         />
         {onFavoriteToggle && (
           <button
-            className={`${styles.favoriteButton} ${isFavorite ? styles.favorited : ''}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              onFavoriteToggle();
-            }}
+            className={`${styles.favoriteButton} ${isFavorite ? styles.favorited : ''} ${isAnimating ? styles.animating : ''}`}
+            onClick={handleFavoriteClick}
             aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
             aria-pressed={isFavorite}
           >
-            {isFavorite ? '★' : '☆'}
+            {isFavorite ? '❤️' : '🤍'}
           </button>
         )}
       </div>
       <div className={styles.content}>
-        <span className={styles.episodeNumber}>
-          Episode {episode.episodeNumber}
-        </span>
+        <div className={styles.metaRow}>
+          <span className={styles.episodeNumber}>#{episode.episodeNumber}</span>
+          <span className={styles.date}>{episode.date}</span>
+        </div>
         <h3 className={styles.title}>{episode.title}</h3>
-        <p className={styles.date}>{episode.date}</p>
       </div>
     </article>
   );

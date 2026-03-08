@@ -6,12 +6,16 @@
 
 .header {
   text-align: center;
+  padding: 1rem 0;
 }
 
 .title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text-color);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 0.5rem;
 }
 

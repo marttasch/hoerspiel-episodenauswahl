@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import styles from './FavoriteButton.module.css';
 
@@ -14,12 +15,19 @@ export function FavoriteButton({
   size = 'md',
   showLabel = false,
 }: FavoriteButtonProps) {
+  const [isAnimating, setIsAnimating] = useState(false);
   const Icon = isFavorite ? FaHeart : FaRegHeart;
+
+  const handleClick = () => {
+    setIsAnimating(true);
+    onToggle();
+    setTimeout(() => setIsAnimating(false), 300);
+  };
 
   return (
     <button
-      className={`${styles.button} ${styles[size]} ${isFavorite ? styles.favorited : ''}`}
-      onClick={onToggle}
+      className={`${styles.button} ${styles[size]} ${isFavorite ? styles.favorited : ''} ${isAnimating ? styles.animating : ''}`}
+      onClick={handleClick}
       aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
       aria-pressed={isFavorite}
     >

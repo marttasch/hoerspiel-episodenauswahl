@@ -6,7 +6,6 @@ import { getSeries } from '../../config/series';
 import { RandomButton } from './RandomButton';
 import { EpisodeDropdown } from './EpisodeDropdown';
 import { EpisodeDetails } from '../common/EpisodeDetails';
-import { FavoriteButton } from '../common/FavoriteButton';
 import styles from './EpisodePicker.module.css';
 
 export function EpisodePicker() {
@@ -86,17 +85,12 @@ export function EpisodePicker() {
 
       {selectedEpisode && (
         <div className={styles.episodeContainer}>
-          <div className={styles.actions}>
-            <FavoriteButton
-              isFavorite={currentSeriesId ? isFavorite(currentSeriesId, selectedEpisode.episodeNumber) : false}
-              onToggle={handleToggleFavorite}
-              showLabel
-            />
-          </div>
           <EpisodeDetails
             episode={selectedEpisode}
             onClose={handleCloseDetails}
             imageBasePath={imageBasePath}
+            isFavorite={currentSeriesId ? isFavorite(currentSeriesId, selectedEpisode.episodeNumber) : false}
+            onFavoriteToggle={handleToggleFavorite}
           />
         </div>
       )}
