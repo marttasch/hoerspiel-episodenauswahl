@@ -4,7 +4,7 @@ import { Button } from '../components/common';
 import styles from './SeriesSelectPage.module.css';
 
 export function SeriesSelectPage() {
-  const { allSeries, selectSeries, clearSeries, hasSelectedSeries } = useSeries();
+  const { allSeries, selectSeries, hasSelectedSeries } = useSeries();
   const navigate = useNavigate();
 
   const handleSelectSeries = (seriesId: string) => {
