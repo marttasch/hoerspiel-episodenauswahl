@@ -1,0 +1,18 @@
+.randomButton {
+  width: 100%;
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,41 @@
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.episodeContainer {
+  animation: fadeIn 0.3s ease;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: var(--danger-color);
+}

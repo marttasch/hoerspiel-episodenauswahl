@@ -1,0 +1,45 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.button.favorited {
+  color: #ef4444;
+}
+
+.button:not(.favorited) {
+  color: var(--text-muted);
+}
+
+.sm {
+  padding: 0.25rem;
+}
+
+.md {
+  padding: 0.5rem;
+}
+
+.lg {
+  padding: 0.75rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
